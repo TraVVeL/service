@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ super() }}
+<div class="box-wrap">
+	<header role="banner" id="fh5co-header">
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="fh5co-navbar-brand">
+							<a class="fh5co-logo" href="/">Ave Maria</a>
+						</div>
+					</div>
+					<div class="col-md-9 main-nav">
+						<ul class="nav text-right">
+							<li><a href="/"><span>Главная</span></a></li>
+							<li><a href="/services">Обслуживание</a></li>
+							<li><a href="/product">Продукция</a></li>
+							<li><a href="/about">О нас</a></li>
+							<li><a href="/contact">связь</a></li>
+							<li  class="active">
+								<a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+							    {{ check_authenticated(name)[0] }}
+								</a>
+							</li>
+							<div class="collapse" id="collapseExample">
+							  <div class="card card-body">
+								<p><a href="{{check_authenticated(name)[-2]}}">{{check_authenticated(name)[0]}}</a>
+								<p><a href="{{check_authenticated(name)[-1]}}">{{check_authenticated(name)[1]}}</a>
+							  </div>
+							</div>								
+						</ul>
+					</div>
+				</div>
+			</nav>
+	  </div>
+	</header>
+</div>
+
+<div class="container size">
+
+{% if ordered and user_info %}
+
+
+
+<h1> ВАШИ ЗАКАЗЫ </h1>
+{% for i in range(user_info | length) %}
+{% for p in range(ordered | length) %}
+{% if user_info[i][17] == ordered[p][9] %}
+<div class="cart-ordered animate-box">
+	
+
+
+	<div class="cart-top">
+	<p>Заказ: {{ordered[p][9]}}</p>
+			<div class="toggle-status">
+				<div>Статус: <span class="order-status {{user_info[i][15]}}">{{user_info[i][15]}}</span></div>
+				<div class="el-info"><p>Итого: <span>{{ordered[p][5]}}p.</span></p></div>
+			</div>
+	</div>
+	<div class="el-ordered">
+		<a href="{{ordered[p][7]}}"><img src="{{ordered[p][8]}}" style="width: 100px; height: 100px; border-radius: 2px;"></a>
+	<div class="card-weight">
+	<div><a class="url_name" href="{{ordered[p][7]}}">{{ordered[p][2]}}</a></div>
+		<div>Телефон получателя: {{user_info[i][2]}}</div>
+	</div>
+	<div class="el-info">
+		<p>Цена: <span>{{ordered[p][6]}}p.</span></p>
+		<p><span>{{ordered[p][4]}} <span class="el-unit">шт. x</span> {{ordered[p][6]}}р.</span></p>
+	</div>
+	</div>
+</div>
+
+
+
+
+
+{% else %}
+{% endif %}
+
+{% endfor %}
+{% endfor %}
+
+{% else %}
+	<div class="cart-ordered empty">
+		<p>Покупок не обнаруженно</p>
+	</div>
+{% endif %}
+</div>
+{% endblock %}
+
+

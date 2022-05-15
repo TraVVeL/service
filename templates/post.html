@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ super() }}
+
+<div class="header-panel">
+	<button class="button-back" onclick="history.back()"><span>&#8592;</span><span>Вернуться</span></button>
+	<a href="\product" class="button-close"><span>&#215;</span></a>
+</div>
+	<header>
+		<div class="FlowerCon">
+		<div class="fadeInLeft animated">
+		<img src="\static\images\productImg\{{post.imgname}}" width="526" height="700">
+		</div>
+		<div class="textblock fadeInRight animated">
+		<p class="el-name">{{ post.name }}</p>
+
+		<p class="col-3-description">Ave-Maria</p>
+
+        <p class="el price">
+            <span class="priceValue">{{ post.price }}</span>
+            <span>р.</span>
+            <span class="el-unit">/шт</span>
+        </p>
+		<div class="buttonmargin">
+            <input type="hidden" id="user_id" value="{{ current_user.get_id() }}">
+            <button class="btn-more-info" data-product-id="{{post.id}}">Купить</button>
+		</div>
+		<p class="el-description ">{{ result_amount | safe }}</p>
+		<p class="el-description ">{{ post.description }}</p>
+		<p class="el-description "> вес: {{ post.weight }} г</p>
+		</div>
+
+		</div>
+	</header>
+
+<div id="fh5co-product-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+                <h3>В дополнении можем предложить новое поступление наших цветов</h3>
+            </div>
+        </div>
+        <div class="owl-carousel owl-carousel2">
+
+        {% for p in range(0, 10) %}
+        <div class="item animate-box">
+            <a href="{{ url_for('show_product', alias=products[p].url)}}">
+                <img class="slider-product" src="\static\images\productImg\{{products[p][8]}}">
+            </a>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Вход</title>
+	<link rel="stylesheet" href="/static/css/login.css" media="screen" type="text/css" />
+	<link rel="icon" href="/static/images/logo.png" type="image-x-icon">
+</head>
+<body>
+    <h1>
+        <a href="\" class="gradient" >Ave Maria</a>
+    </h1>
+
+    <p class="gradient">
+
+    </p>
+
+    <div id="login">
+        <form action="/login" method="post">
+            <fieldset class="clearfix">
+                {% for cat, msg in get_flashed_messages(True) %}
+                <div class="flash {{cat}}">{{msg}}</div>
+                {% endfor %}
+
+               <p><span class="fontawesome-user"></span><input type="text" name="email" value="Логин" onBlur="if(this.value == '') this.value = 'Логин'" onFocus="if(this.value == 'Логин') this.value = ''" required></p>
+
+                <p><span class="fontawesome-lock"></span><input type="password" name="password"  value="Пароль" onBlur="if(this.value == '') this.value = 'Пароль'" onFocus="if(this.value == 'Пароль') this.value = ''" required></p>
+
+                <form action="/login" method="post">
+                    <div id="check">
+                        <input type="checkbox" name="remindme" id="cb1"> <label for="cb1"><p class="checker">&nbsp;&nbsp;&nbsp;Запомнить меня?</p></label>
+
+                    </div>
+                </form>
+
+                <p><input type="submit" value="ВОЙТИ"></p>
+            </fieldset>
+        </form>
+
+
+
+        <p>Нет аккаунта? &nbsp;&nbsp;<a href="/register">Регистрация</a><span class="fontawesome-arrow-right"></span></p>
+    </div>
+
+
+
+</body>
+</html>

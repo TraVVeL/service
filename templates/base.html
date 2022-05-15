@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+<html class="no-js">
+<title>Ave Maria &mdash; Букеты для всех</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<link rel="icon" href="/static/images/logo.png" type="image-x-icon">
+
+<!-- font -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+
+<!-- Animate.css -->
+<link rel="stylesheet" href="/static/css/animate.css">
+
+<!-- Icomoon Icon Fonts-->
+<link rel="stylesheet" href="/static/css/icomoon.css">
+
+<!-- Bootstrap  -->
+<link rel="stylesheet" href="/static/css/bootstrap.css">
+
+<!-- Owl Carousel -->
+<link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+
+<!-- css style -->
+<link type="text/css" href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
+</head>
+
+<body>
+
+{% block content -%}
+
+<div id="content">
+
+<div class="cart-shopping shoppingCartButton fadeIn animated">
+    <div type="checkbox" class="shoppingCartButton">
+        <img src=/static/images/cart.png>
+    </div>
+    <div class="quantity shoppingCartButton">
+        <p id="quantity"></p>
+    </div>
+</div>
+
+<nav>
+	<div class="overlay hide"></div>
+
+    <div class="producstOnCart hide">
+
+        <div class="top">
+            <button id="closeButton">
+                <i class="icon-cross"></i>
+            </button>
+            <h2>Корзина</h2>
+        </div>
+
+        <div id="buyItems">
+            <h4 class="empty">Упс, похоже, что ваша корзина пуста</h4>
+        </div>
+        <div class="priceCheckout hidden" id="sum-prices">
+        </div>  
+        <form method="POST" id="order_form"> 
+            <div class="modal-field">
+                <div class="modal-content product hidden">
+                    <div class="modal-header header">
+                        <h2 class="modal-title title" id="modal_order_label">Ваш заказ</h2>
+
+                        <p><input type="text" class="input-more-info" id="name" placeholder="Имя*" required></p>          
+                        <p><input type="text" class="input-more-info" id="phone" placeholder="Ваш телефон*" required></p>
+                        <p><input type="text" class="input-more-info" id="mail" placeholder="Почта*" required></p>
+
+                        <h2 class="modal-title title" id="modal_order_label">Доставка</h2>
+
+
+                        <h4>Получатель (Имя)</h4>
+                        <p><input type="text" class="input-more-info" id="secondary_name" placeholder="Кому предназначенм букет"></p>
+                        <h4>Номер телефона получателя</h4>
+                        <p><input type="text" class="input-more-info" id="secondary_phone" placeholder="+7 999 000 00 00"></p>
+
+                        <h4>Адрес</h4>
+                        <p><input type="text" class="input-more-info" id="city" placeholder="Город*" required></p>
+                        <p><input type="text" class="input-more-info" id="street" placeholder="Улица*" required></p>
+                        <p><input type="text" class="input-more-info" id="building_address" placeholder="Дом*" required></p>
+                        <p><input type="text" class="input-more-info" id="entrance" placeholder="Подъезд*" required></p>
+                        <p><input type="text" class="input-more-info" id="floor" placeholder="Этаж"></p>
+                        <p><input type="text" class="input-more-info" id="apartment" placeholder="Квартира"></p>
+                        <h4>Дата доставки</h4>
+                        <p><input type="date" class="input-more-info" id="deliver"></p>
+                        <p><select class="input-more-info" size="1" id="deliver_time">
+                            <option class="input-more-info" value="9:00 - 12:00">9:00 - 12:00</option>
+                            <option  value="12:00 - 15:00">12:00 - 15:00</option>
+                            <option value="15:00 - 18:00">15:00 - 18:00</option>
+                            <option value="18:00 - 21:00">18:00 - 21:00</option>
+                        </select></p>
+                    
+                        <h4>Комментарий</h4>
+                        <p><textarea class="textarea-more-info" id="note"></textarea></p>
+                        <input type="hidden" id="user_id" value="{{ current_user.get_id() }}">
+                        <p><div id="order_alert" class="flash"></div></p>
+                    </div>
+                </div>
+            </div>  
+        <button type="submit" class="btn-add-to-cart checkout">Оформить заказ</button>
+        </form>  
+        <div class="user-agreement">
+			<p>Нажимая на кнопку, вы даете <a class="glow-agreement" href="/agreement" target="_blank">согласие на обработку своих персональных данных</a></p>
+		</div>    
+    </div>
+
+</nav>
+
+</div>
+{% endblock%}
+<footer>
+	<div id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3 text-center">
+					<p>Тестовый сайт <a href="#">Ave Maria</a>. для показа функционала. <br>Made with <i class="icon-heart3 love"></i> my social link / телеграм <a href="https://t.me/TraVVe1/" target="_blank">TraVVe1</a></p>
+					<p class="fh5co-social-icons">
+					<a href="https://t.me/TraVVe1"><i class="icon-twitter-with-circle"></i></a>
+					<a href="https://t.me/TraVVe1"><i class="icon-facebook-with-circle"></i></a>
+					<a href="https://www.instagram.com/tiedinolo/"><i class="icon-instagram-with-circle"></i></a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+</body>
+
+<!-- Modernizr JS -->
+<script src="/static/js/modernizr-2.6.2.min.js"></script>
+<!-- FOR IE9 below -->
+
+<!--[if lt IE 9]-->
+<script src="/static/js/respond.min.js"></script>
+<!--[endif]-->
+
+<!-- jQuery -->
+<script src="/static/js/jquery.min.js"></script>
+
+<!-- jQuery Easing -->
+<script src="/static/js/jquery.easing.1.3.js"></script>
+
+	<!-- Bootstrap -->
+<script src="/static/js/bootstrap.min.js"></script>
+
+<!-- Owl carousel -->
+<script src="/static/js/owl.carousel.min.js"></script>
+
+	<!-- Waypoints -->
+<script src="/static/js/jquery.waypoints.min.js"></script>
+
+<!-- Parallax Stellar -->
+<script src="/static/js/jquery.stellar.min.js"></script>
+
+<!-- Main JS (Do not remove) -->
+<script src="/static/js/main.js"></script>
+
+<!-- cart JS -->
+<script src="/static/js/cart.js"></script>
+
+<!-- Google Map -->
+<script src="/static/js/google_map.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhWINgRUCnZr1n-_miVx175oYFSIOF3To&callback=initMap&v=weekly"
+    async defer>
+</script>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

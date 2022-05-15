@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ super()}}
+	<div class="box-wrap">
+		<header role="banner" id="fh5co-header">
+			<div class="container">
+				<nav class="navbar navbar-default">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="fh5co-navbar-brand">
+								<a class="fh5co-logo" href="/">Ave Maria</a>
+							</div>
+						</div>
+						<div class="col-md-9 main-nav">
+							<ul class="nav text-right">
+								<li><a href="/"><span>Главная</span></a></li>
+								<li><a href="/services">Обслуживание</a></li>
+								<li><a href="/product">Продукция</a></li>
+								<li class="active"><a href="/about">О нас</a></li>
+								<li><a href="/contact">Связь</a></li>
+								<li>
+									<a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+								    {{ check_authenticated(name)[0] }}
+									</a>
+								</li>
+	                            <div class="collapse" id="collapseExample">
+	                                <div class="card card-body">
+	                                <p><a href="{{check_authenticated(name)[-2]}}">{{check_authenticated(name)[0]}}</a>
+	                                <p><a href="{{check_authenticated(name)[-1]}}">{{check_authenticated(name)[1]}}</a>
+	                                </div>
+	                            </div>        
+							</ul>
+						</div>
+					</div>
+				</nav>
+		  </div>
+		</header>
+		<!-- END: header -->
+		<div id="fh5co-intro-section" class="section-overlay animate-box" data-animate-effect="fadeIn">
+			<div class="fh5co-intro-cover text-center" data-stellar-background-ratio="0.5" style="background-image: url(/static/images/intro.jpg);">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 float-overlay">
+							<h2>О нас</h2>
+							<h3>Ave Maria — студия флористики, декора и ароматов для дома</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END fh5co-intro-section -->
+		<div id="fh5co-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9">
+						<div class="about-section">
+							<h3 class="animate-box">История флористики</h3>
+							<img class="display-left animate-box" src="/static/images/about.jpg" alt="about">
+							<p class="animate-box">Профессия флористики относится к ряду тех занятий, в которых требуется творческий взгляд на окружающий мир, видение прекрасного в обычном и, в конце концов, хорошее настроение и умение дарить добро. Профессия флориста начинается с надлежащего ухода и обработки цветов, изучения символики цветов и умения составлять живые композиции, наделять их нужным настроением и передавать через них теплые чувства и эмоции. Профессионалом можно назвать человека, за спиной которого долголетний опыт, который совершенствует свой навык каждый день и имеет полное представление о значении каждого цвета и цветка.</p>
+							<img class="display-right animate-box" src="/static/images/product-1.jpg" alt="about">
+							<p class="animate-box">По мнению экспертов, в мире насчитывается около <br> 270 000 видов цветов. Конечно, это число не включает в себя те виды, которые теперь считаются вымершими. Несмотря на то, что ученые продолжают изучать цветы и их происхождение, они все еще неспособны ответить, почему существует такое разнообразие растений и как происходило их преображение на пути многолетней эволюции. Мы знаем, что цветы, или их ранние предки, населяют Землю уже очень давно. Были обнаружены растения, напоминающие окаменевшие магнолии, существование которых насчитывает около 93 миллионов лет. Еще совсем недавно были обнаружены травянистые окаменелости, которым, как полагают, было не менее 120 миллионов лет.</p>
+							<blockquote class="animate-box">
+								<p>“Конечно, я мог бы обойтись и без цветов, но они помогают мне сохранить уважение к самому себе, ибо доказывают, что я не скован по рукам и ногам будничными заботами. Они свидетельство моей свободы.”</p>
+								<span>&mdash;  Рабиндранат Тагор</span>
+							</blockquote>
+
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="sidebar">
+							<div class="inner animate-box">
+								<h2>Луи Мария де Шривер</h2>
+								<a href="#"><img class="img-responsive" src="/static/images/product-2.jpg" alt="product"></a>
+								<p>Мы работаем для вас ежедневно с 10:00 до 21:00 </p>
+							</div>
+							<div class="inner animate-box">
+								<h2>Наши магазины</h2>
+								<ul class="list">
+									<li><a href="https://www.google.ru/maps/place/Красноярск,+Красноярский+край/@56.0266501,92.7256536,11z/data=!3m1!4b1!4m5!3m4!1s0x5cd7afc9a1ff37e3:0xd597e1468fd647ff!8m2!3d56.0152834!4d92.8932476">Красноярск</a>
+										<ul>
+											<li><a href="https://www.google.ru/maps/place/Спортэкс/@55.9956893,92.871428,16z/data=!4m5!3m4!1s0x5cd7ae265a34ffb1:0x30dd5ae1305c3fc1!8m2!3d55.9945352!4d92.8723936">Адресс...</a></li>
+											<li><a href="https://www.google.ru/maps/place/Спортэкс/@55.9956893,92.871428,16z/data=!4m5!3m4!1s0x5cd7ae265a34ffb1:0x30dd5ae1305c3fc1!8m2!3d55.9945352!4d92.8723936">Адресс...</a></li>
+											<li><a href="https://www.google.ru/maps/place/Спортэкс/@55.9956893,92.871428,16z/data=!4m5!3m4!1s0x5cd7ae265a34ffb1:0x30dd5ae1305c3fc1!8m2!3d55.9945352!4d92.8723936">Адресс...</a></li>
+											<li><a href="https://www.google.ru/maps/place/Спортэкс/@55.9956893,92.871428,16z/data=!4m5!3m4!1s0x5cd7ae265a34ffb1:0x30dd5ae1305c3fc1!8m2!3d55.9945352!4d92.8723936">Адресс...</a></li>
+
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<div class="inner animate-box">
+								<p class="quote">“Если ты действительно хочешь что-то сделать, Ты найдешь способ, если нет, ты найдешь оправдание”</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+

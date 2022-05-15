@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ super() }}
+	<body>
+	<div class="box-wrap">
+		<header role="banner" id="fh5co-header">
+			<div class="container">
+				<nav class="navbar navbar-default">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="fh5co-navbar-brand">
+								<a class="fh5co-logo" href="/">Ave Maria</a>
+							</div>
+						</div>
+						<div class="col-md-9 main-nav">
+							<ul class="nav text-right">
+								<li><a href="/"><span>Главная</span></a></li>
+								<li><a href="/services">Обслуживание</a></li>
+								<li><a href="/product">Продкция</a></li>
+								<li><a href="/about">о нас</a></li>
+								<li class="active"><a href="/contact">связь</a></li>
+								<li>
+									<a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+								    {{ check_authenticated(name)[0] }}
+									</a>
+								</li>
+	                            <div class="collapse" id="collapseExample">
+	                                <div class="card card-body">
+	                                <p><a href="{{check_authenticated(name)[-2]}}">{{check_authenticated(name)[0]}}</a>
+	                                <p><a href="{{check_authenticated(name)[-1]}}">{{check_authenticated(name)[1]}}</a>
+	                                </div>
+	                            </div>
+							</ul>
+						</div>
+					</div>
+				</nav>
+		  </div>
+		</header>
+	</div>
+		<!-- END: header -->
+		<div id="fh5co-intro-section" class="section-overlay animate-box" data-animate-effect="fadeIn">
+			<div class="fh5co-intro-cover text-center" data-stellar-background-ratio="0.5" style="background-image: url(/static/images/intro.jpg); background-size: cover;">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 float-overlay">
+							<h2>Свяжитесь с нами</h2>
+							<h3>Ave Maria — студия флористики, декора и ароматов для дома</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END fh5co-intro-section -->
+		<div id="fh5co-contact-section">
+			<div class="container">
+				<div class="col-md-4 animate-box">
+					<h3 class="section-title">Наш адресс</h3>
+					<ul class="contact-info">
+						<li><i class="icon-location-pin"></i>Красноярск | улица...</li>
+						<li><i class="icon-phone2"></i>+(123)-456-789-10</li>
+						<li><i class="icon-mail"></i><a href="mailto:ave.maria.herb@gmail.com">ave.maria.herb@gmail.com</a></li>
+						<li><i class="icon-globe2"></i><a href="/">Наш сайт</a></li>
+					</ul>
+				</div>
+				<div class="col-md-8 animate-box">
+					<form id="form">
+						<div class="form-group row">
+							<div class="col-md-6 field">
+								<label for="firstname">Имя</label>
+								<input type="text" id="name" class="form-control" required>
+							</div>
+							<div class="col-md-6 field">
+								<label for="lastname">Фамилия</label>
+								<input type="text" id="surname" class="form-control" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-6 field">
+								<label for="">Почта</label>
+								<input type="text" id="email" class="form-control" required>
+							</div>
+							<div class="col-md-6 field">
+								<label for="">Телефон</label>
+								<input type="text" id="phone" class="form-control" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-12 field">
+								<label for="">Сообщение</label>
+								<textarea id="message" cols="30" rows="10" class="form-control"></textarea>
+								<div id="successAlert" class="form flash"></div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-12 field">
+								<button type="submit" class="btn btn-primary">Отправить</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+		<div id="map" class="fh5co-map animate-box"></div>
+		<!-- END MAP -->
+	</div>
+	</body>
+<script>
+$(document).ready(function() {
+    $('#form').on('submit', function(event) {
+        $.ajax({
+            data : {
+                name : $('#name').val(),
+                surname : $('#surname').val(),
+                email : $('#email').val(),
+                phone : $('#phone').val(),
+                message : $('#message').val()
+            },
+            type : 'POST',
+            url : '/render_user_issue'
+        })
+        .done(function(data) {
+                $('#successAlert').text(data.content).show();
+                let successAlert = $('#successAlert');
+                successAlert.attr('class', data.category);
+        });
+
+        event.preventDefault();
+    });
+});
+</script>
+{% endblock %}
+
+

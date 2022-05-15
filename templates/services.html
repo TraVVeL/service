@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ super() }}
+
+	<div class="box-wrap">
+		<header role="banner" id="fh5co-header">
+			<div class="container">
+				<nav class="navbar navbar-default">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="fh5co-navbar-brand">
+								<a class="fh5co-logo" href="/">Ave Maria</a>
+							</div>
+						</div>
+						<div class="col-md-9 main-nav">
+							<ul class="nav text-right">
+								<li><a href="/"><span>Главная</span></a></li>
+								<li class="active"><a href="/services">Обслуживание</a></li>
+								<li><a href="/product">Продукция</a></li>
+								<li><a href="/about">О нас</a></li>
+								<li><a href="/contact">Свзяь</a></li>
+								<li>
+								<a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+							    	{{ check_authenticated(name)[0] }}
+								</a>
+								</li>
+								<div class="collapse" id="collapseExample">
+							  		<div class="card card-body">
+									<p><a href="{{check_authenticated(name)[-2]}}">{{check_authenticated(name)[0]}}</a>
+									<p><a href="{{check_authenticated(name)[-1]}}">{{check_authenticated(name)[1]}}</a>
+									</div>
+							  	</div>
+							</div>	
+							</ul>
+						</div>
+					</div>
+				</nav>
+		  </div>
+		</header>
+		<!-- END: header -->
+		<div id="fh5co-intro-section" class="section-overlay animate-box" data-animate-effect="fadeIn">
+			<div class="fh5co-intro-cover text-center" data-stellar-background-ratio="0.5" style="background-image: url(/static/images/intro.jpg); background-size: cover;">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 float-overlay">
+							<h2>Наш сервис</h2>
+							<h3>Ave Maria — студия флористики, декора и ароматов для дома</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END fh5co-intro-section -->
+		<div id="fh5co-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1">
+						<div class="col-md-6 animate-box">
+							<div class="fh5co-inner fh5co-services">
+								<i class="icon-profile-male"></i>
+								<div class="holder-section">
+									<h3>Такстичность</h3>
+									<p>Исключительно вежливые и тактичные сотрудники. </p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 animate-box">
+							<div class="fh5co-inner fh5co-services">
+								<i class="icon-magnifying-glass"></i>
+								<div class="holder-section">
+									<h3>Уникальность</h3>
+									<p>Ассортимент цветов и растений, который не найти в магазине шаговой доступности. </p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 animate-box">
+							<div class="fh5co-inner fh5co-services">
+								<i class="icon-key"></i>
+								<div class="holder-section">
+									<h3>Подход</h3>
+									<p>Индивидуальный подход к каждому клиенту. </p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 animate-box">
+							<div class="fh5co-inner fh5co-services">
+								<i class="icon-mobile"></i>
+								<div class="holder-section">
+									<h3>Электронные чеки</h3>
+									<p>Только электронные чеки, которые можно распечатать при необходимости. </p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 animate-box">
+							<div class="fh5co-inner fh5co-services">
+								<i class="icon-pricetags"></i>
+								<div class="holder-section">
+									<h3>Доставка</h3>
+									<p>Бесплатная доставка без выходных. </p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 animate-box">
+							<div class="fh5co-inner fh5co-services">
+								<i class="icon-gift"></i>
+								<div class="holder-section">
+									<h3>Ассортимент</h3>
+									<p>Только свежие цветы, их собирают в букеты аккуратно и бережно сразу после заказа. </p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Регистрация</title>
+	<link rel="stylesheet" href="/static/css/register.css" media="screen" type="text/css" />
+	<link rel="icon" href="/static/images/logo.png" type="image-x-icon">
+</head>
+<body>
+    <h1>
+        <a href="\" class="gradient" >Ave Maria</a>
+    </h1>
+
+    <p class="gradient">
+
+    </p>
+
+    <div id="login">
+        <form action="/register" method="post">
+            <fieldset class="clearfix">
+                {% for cat, msg in get_flashed_messages(True) %}
+                <div class="flash">{{msg}}</div>
+                {% endfor %}
+
+                <p><span class="fontawesome-user"></span><input type="text" name="name" value="Логин" onBlur="if(this.value == '') this.value = 'Логин'" onFocus="if(this.value == 'Логин') this.value = ''" required></p> <!-- JS because of IE support; better: placeholder="Username" -->
+                <p><span class="fontawesome-user"></span><input type="text" name="email" value="Почта" onBlur="if(this.value == '') this.value = 'Почта'" onFocus="if(this.value == 'Почта') this.value = ''" required></p>
+                <p><span class="fontawesome-lock"></span><input type="password" name="password" value="Пароль" onBlur="if(this.value == '') this.value = 'Пароль'" onFocus="if(this.value == 'Пароль') this.value = ''" required></p> <!-- JS because of IE support; better: placeholder="Password" -->
+                <p><span class="fontawesome-lock"></span><input type="password" name="password1" value="Пароль" onBlur="if(this.value == '') this.value = 'Пароль'" onFocus="if(this.value == 'Пароль') this.value = ''" required></p>
+                <p><input type="submit" value="ЗАРЕГИСТРИРОВАТЬСЯ"></p>
+                
+            </fieldset>
+        </form>
+        <p>Имеется аккаунт? &nbsp;&nbsp;<a href="/login">Войти</a><span class="fontawesome-arrow-right"></span></p>
+    </div>
+</body>
+</html>

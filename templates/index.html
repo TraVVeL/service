@@ -1,0 +1,256 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ super() }}
+
+<div class="box-wrap">
+	<header role="banner" id="fh5co-header">
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="fh5co-navbar-brand">
+							<a class="fh5co-logo" href="/">Ave Maria</a>
+						</div>
+					</div>
+					<div class="col-md-9 main-nav">
+						<ul class="nav text-right">
+							<li class="active"><a href="/"><span>Главная</span></a></li>
+							<li><a href="/services">Обслуживание</a></li>
+							<li><a href="/product">Продукция</a></li>
+							<li><a href="/about">О нас</a></li>
+							<li><a href="/contact">связь</a></li>
+							<li>
+								<a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+							    {{ check_authenticated(name)[0] }}
+								</a>
+							</li>
+							<div class="collapse" id="collapseExample">
+						  		<div class="card card-body">
+								<p><a href="{{check_authenticated(name)[-2]}}">{{check_authenticated(name)[0]}}</a>
+								<p><a href="{{check_authenticated(name)[-1]}}">{{check_authenticated(name)[1]}}</a>
+								</div>
+						  	</div>							
+						</ul>
+					</div>
+				</div>
+			</nav>
+	  </div>
+	</header>
+</div>
+
+	<form id="form">
+	    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+	         <div class="modal-dialog" role="document">
+	           <div class="modal-content">
+	             <div class="modal-header">
+	               <h2 class="modal-title" id="ModalLabel">Доверьтесь нашему<br>шеф-флористу!</h2>
+	             </div>
+	             <div class="modal-body">
+	 
+	                <p><input type="text" class="input-more-info" id="phone" placeholder="Ваш номер*" required></p>
+	                <p><input type="text" class="input-more-info" id="email" placeholder="Ваша почта*" required></p>
+
+	                <h4>Цветовая гамма</h4>
+	                <p><input type="text" class="input-more-info" id="color"></p>
+	                <h4>Примерная стоимость букета</h4>
+	                <p><input type="text" class="input-more-info" id="price"></p>
+
+	                <h5>Мы вам перезвоним в кратчайшее время <br> и обсудим детали заказа</h5>
+	             	<p><div id="successAlert" class="flash"></div></p>
+	             <div class="modal-footer">
+	               <p><button type="submit" class="btn btn-secondary">Отправить</button></p>
+	             </div>
+	             </div>
+	           </div>
+	         </div>  
+	    </div>
+	</form>
+
+	<div class="fluid-container">
+	<div class="wrapper">
+		<div class="slider-wrap">
+			<div class="component component-headline">
+				<div class="row row-header">
+					<div class="col-md-12">
+						<div class="header-wrap">
+							<h1><span class="reveal-text">БУКЕТЫ ДЛЯ ТЕХ, КОМУ ТРУДНО УГОДИТЬ</span></h1>
+							<h2><span class="reveal-text">Не знаете, какой букет выбрать? <br> доверьтесь нашему шеф-флористу!</span></h2>
+							<div class="carousel-caption button-details">
+								<button type="button" class="btn btn-details btn-primary" data-toggle="modal" data-target="#Modal">Подробнее</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row row-text">
+					<div class="col-md-12">
+						<div class="owl-carousel3 owl-loaded owl-drag">
+
+							<div class="item">
+								<img src="/static/images/large_1.svg" alt="Slider">
+							</div>
+
+							<div class="item">
+								<img src="/static/images/large_2.svg" alt="">
+							</div>
+
+							<div class="item">
+								<img src="/static/images/large_3.svg" alt="">
+							</div>
+							<div class="item">
+								<img src="/static/images/large_4.svg" alt="">
+							</div>
+							<div class="item">
+								<img src="/static/images/large_5.svg" alt="">
+							</div>
+
+						</div><!-- owl carousel end -->
+					</div>
+				</div>
+			</div>
+			</div><!-- headline end -->
+		</div><!-- slider-wrap end -->
+	</div><!-- wrapper end -->
+</div><!-- fluid-container end -->
+
+
+	<div id="fh5co-media-section">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center heading-section">
+					<h3>ДОБРО ПОЖАЛОВАТЬ НА САЙТ</h3>
+					<p>Ave Maria — студия флористики, декора и ароматов для дома. Мы молодые, открытые и креативные. Мы создали свою студию, потому что любим цветы, мир, который нас окружает, и саму жизнь.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-7 animate-box">
+					<div class="fh5co-cover" style="background-image: url(/static/images/shows-1.jpg);">
+						<div class="desc">
+							<p>Бесплатная доставка цветов премиум-качества. Свежие цветы с полей Голландии и плантаций Колумбии и России</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="fh5co-cover">
+						<div class="fh5co-cover-hero animate-box">
+							<div class="fh5co-cover-thumb" style="background-image: url(/static/images/shows-2.jpg);"></div>
+							<div class="desc-thumb">
+								<p>Мы знаем, что такое WOW-эффект и как его произвести</p>
+
+							</div>
+						</div>
+
+						<div class="fh5co-cover-hero animate-box">
+							<div class="fh5co-cover-thumb" style="background-image: url(/static/images/shows-3.jpg);"></div>
+							<div class="desc-thumb">
+								<p>Ориентация на актуальные тренды во флористике</p>
+
+							</div>
+						</div>
+
+						<div class="fh5co-cover-hero animate-box">
+							<div class="fh5co-cover-thumb" style="background-image: url(/static/images/shows-4.jpg);"></div>
+							<div class="desc-thumb">
+
+								<p>Каждый букет по-настоящему уникален</p>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END fh5co-media-section -->
+	<div id="fh5co-intro-section">
+		<div class="fh5co-intro-cover text-center animate-box" data-animate-effect="fadeIn" data-stellar-background-ratio="0.5" style="background-image: url(/static/images/intro.jpg); background-size: cover;">
+			<a href="#" class="btn">Обслуживание клинетов - наш приоритет</a>
+		</div>
+	</div>
+	<!-- END fh5co-intro-section -->
+	<div id="fh5co-product-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+					<h3>наша коллекция</h3>
+					<p>Несправедливо, что цветы появляются в доме лишь по особому случаю. Они несут в мир свою красоту, нежность и эстетическое наслаждение. Так почему бы не окружать себя цветами просто потому, что они есть?</p>
+				</div>
+			</div>
+			<div class="owl-carousel owl-carousel2">
+
+				{% for p in range(0, 10) %}
+				<div class="item animate-box">
+					<a href="{{ url_for('show_product', alias=products[p].url)}}">
+						<img class="slider-product" src="\static\images\productImg\{{products[p][8]}}">
+					</a>
+				</div>
+				{% endfor %}
+
+			</div>
+		</div>
+	</div>
+
+	<!-- END fh5co-product-section -->
+	<div id="fh5co-section" class="fh5co-grey-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 animate-box">
+					<div class="fh5co-inner">
+						<i class="icon-box"></i>
+						<div class="holder-section">
+							<h3>Свежие цветы</h3>
+							<p>Их собирают бережно <br> и аккуратно сразу же после заказа</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 animate-box">
+					<div class="fh5co-inner">
+						<i class="icon-user-tie"></i>
+						<div class="holder-section">
+							<h3>Вежливость</h3>
+							<p>Исключительно компитентные и тактичные сотрудники </p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 animate-box">
+					<div class="fh5co-inner">
+						<i class="icon-stopwatch"></i>
+						<div class="holder-section">
+							<h3>Скорость</h3>
+							<p>Бесплатная и быстрая доставка без выходных </p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('#form').on('submit', function(event) {
+        $.ajax({
+            data : {
+                phone : $('#phone').val(),
+                email : $('#email').val(),
+                color : $('#color').val(),
+                price : $('#price').val(),
+            },
+            type : 'POST',
+            url : '/render_user_issue'
+        })
+        .done(function(data) {
+            $('#successAlert').text(data.content).show();
+            let successAlert = $('#successAlert');
+            successAlert.attr('class', data.category);
+        });
+        event.preventDefault();
+    });
+});
+</script>
+{% endblock %}
+
