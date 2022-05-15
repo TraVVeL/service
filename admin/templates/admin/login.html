@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'admin/base_admin.html' %}
+{% block content %}
+{{ super() }}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/login.css" media="screen" type="text/css" />
+    <link rel="icon" href="/static/images/logo.jpg" type="image-x-icon">
+</head>
+<body>
+<p class="title-title">Admin panel
+    <div id="login">
+        <form action="" method="post">
+            <fieldset class="clearfix">
+                {% for cat, msg in get_flashed_messages(True) %}
+                <div class="flash {{cat}}">{{msg}}</div>
+                {% endfor %}
+                <p><span class="fontawesome-user"></span><input class="input" type="text" name="user" value="Логин" onBlur="if(this.value == '') this.value = 'Логин'" onFocus="if(this.value == 'Логин') this.value = ''" required></p>
+                <p><span class="fontawesome-lock"></span><input type="password" name="password"  value="Пароль" onBlur="if(this.value == '') this.value = 'Пароль'" onFocus="if(this.value == 'Пароль') this.value = ''" required></p>
+                <p><input type="submit" value="ВОЙТИ"></p>
+            </fieldset>
+        </form>
+    </div>
+
+</div>
+</div>
+</body>
+{% endblock %}
+</html>
+

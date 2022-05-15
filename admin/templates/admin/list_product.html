@@ -1,0 +1,56 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block content %}
+{{ super() }}
+<div class="container">
+<h3 class="title-collection">{{ title }}</h3>
+<div id="toolbar">
+        <select class="form-control">
+                <option value="">Export Basic</option>
+                <option value="all">Export All</option>
+                <option value="selected">Export Selected</option>
+        </select>
+</div>
+<form method="POST">
+<table id="table" 
+            data-toggle="table"
+            data-search="true"
+            data-filter-control="true" 
+            data-show-export="true"
+            data-click-to-select="true"
+            data-toolbar="#toolbar"
+            data-id-field="id"
+            data-select-item-name="checkbox_value"
+            data-pagination="true">
+    <thead>
+        <tr>
+            <th data-checkbox="true"></th>
+            <th data-field="id" data-filter-control="input" data-sortable="true">id</th>
+            <th data-field="name" data-filter-control="input" data-sortable="true">name</th>
+            <th data-field="price" data-filter-control="select" data-sortable="true">price</th>
+            <th data-field="weight" data-filter-control="select" data-sortable="true">weigth</th>
+            <th data-field="url" data-sortable="true">url</th>
+            <th data-field="desription" data-sortable="true">desription</th>
+            <th data-field="quick description" data-sortable="true">quick description</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in product %}
+        <tr>
+            <td class="bs-checkbox "><input type="checkbox"></td>
+            <td style="width: 0px;">{{p.id}}</td>
+            <td>{{p.name}}</td>
+            <td>{{p.price}}</td>
+            <td>{{p.weight}}</td>
+            <td>{{p.url}}</td>
+            <td>{{p.description}}</td>
+            <td>{{p.quick_describe}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table><input type="submit" value="Delete selected" class="btn btn-primary">
+</form>
+</div>
+{% endblock %}
+

@@ -1,0 +1,49 @@
+{% extends 'admin/base_admin.html' %}
+{% block content %}
+{{ super() }}
+
+<h3 class="title-collection">{{ title }}</h3>
+
+<div class="container">
+
+<div id="toolbar">
+        <select class="form-control">
+                <option value="">Export Basic</option>
+                <option value="all">Export All</option>
+                <option value="selected">Export Selected</option>
+        </select>
+</div>
+<form method="POST">
+<table id="table" 
+       data-toggle="table"
+       data-search="true"
+       data-filter-control="true" 
+       data-show-export="true"
+       data-click-to-select="true"
+       data-toolbar="#toolbar"
+       data-id-field="id"
+       data-select-item-name="checkbox_value_user"
+       data-pagination="true">
+
+    <thead>
+        <tr>
+            <th data-checkbox="true"></th>
+            <th data-field="id" data-filter-control="input" data-sortable="true">id</th>            
+            <th data-field="name" data-filter-control="input" data-sortable="true">name</th>
+            <th data-field="email" data-filter-control="input" data-sortable="true">email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in list_user %}
+        <tr>
+            <td class="bs-checkbox"><input value="{{p.id}}" type="checkbox"></td>
+            <td>{{p.id}}</td>
+            <td>{{p.name}}</td>
+            <td>{{p.email}}</td>
+        </tr>
+        {% endfor%}
+    </tbody>
+</table><input type="submit" value="Delete selected" class="btn btn-primary">
+</form>
+</div>
+{% endblock %}

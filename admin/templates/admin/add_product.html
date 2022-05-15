@@ -1,0 +1,77 @@
+{% extends 'admin/base_admin.html' %}
+{% block content %}
+{{ super() }}
+
+<h3 class="title-collection">{{ title }}</h3>
+
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{msg | safe}}</div>
+{% endfor %}
+<div class="add-post-container">
+    <form action="{{url_for('admin.add_product')}}" method="POST" class="form-contact" enctype=multipart/form-data>
+        
+        <div class="block-col-1">
+            <label class="text-label">Название букета </label>
+            <input class="text-input" type="text" name="name" value="" required />
+        </div>
+
+
+        <div class="block-col-1">
+            <label class="text-label">Вес товара</label>
+            <input class="text-input" type="text" name="weight" value="" required />
+        </div>
+
+
+        <div class="block-col-1">
+            
+            <label class="text-label">Колличество цветков<p data-tooltip="Текст будет переноситься на новую строку если указать 'шт.' ">&#9872;</p></label>  
+            <input class="text-input" type="text" name="amount" value="" required />
+        </div>
+
+        <div class="block-col-1">
+            <label class="text-label" >Цена товара </label>
+            <input class="text-input" type="text" name="price" value="" required />
+        </div>
+
+        <div class="block-col-1">
+            <label class="text-label" >URL товара</label>
+            <input class="text-input" type="text" name="url" value="" required />
+        </div>
+        
+        <div class="block-col-2">
+            <ul class="con-col-2">
+                <li>
+                    <label class="text-input-col" >Состав товара </label>
+                </li>
+                <li>
+                    <textarea class="text-label-col" name="description" required></textarea>
+                </li>
+            </ul>
+        </div>
+        
+        
+
+        <div class="block-col-2">
+            <ul class="con-col-2">
+                <li>
+                <label class="text-input-col" >Небольшое описание товара </label>
+                </li>
+
+                <li>
+                <textarea class="text-label-col" name="quick_describe" required></textarea>
+                </li>
+            </ul>
+        </div>
+         
+        
+        <div class="bottom-container">
+            <div id="upload-container">
+                <input id="file-input" type=file name=file required><label for=file-input>Select file</label><span>or drag the file</span></input>
+            </div>
+            <div class="button-submit"><input type="submit" value="Добавить">
+            </div>
+        </div>
+
+    </form>
+</div>
+{% endblock %}

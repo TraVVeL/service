@@ -1,0 +1,67 @@
+{% extends 'admin/base_admin.html' %}
+{% block content %}
+{{ super() }}
+
+<h3 class="title-collection">{{ title }}</h3>
+
+<div class="container">
+
+    <div id="toolbar">
+        <select class="form-control">
+        <option value="">Export Basic</option>
+        <option value="all">Export All</option>
+        <option value="selected">Export Selected</option>
+        </select>
+    </div>
+    <form method="POST">
+
+        <table id="table" 
+        data-toggle="table"
+
+        data-search="true"
+        data-filter-control="true" 
+        data-show-export="true"
+
+        data-toolbar="#toolbar"
+        data-id-field="id"
+        data-select-item-name="checkbox_value_issues"
+        data-pagination="true">
+
+            <thead>
+                <tr>
+                    <th data-checkbox="true"></th>
+                    <th data-field="id" data-filter-control="input" data-sortable="true">id</th> 
+                    <th data-field="phone" data-filter-control="input" data-sortable="true">phone</th>
+                    <th data-field="mail" data-filter-control="input" data-sortable="true">email</th>
+                    <th data-field="message" data-filter-control="input" data-sortable="true">message</th>
+                    <th data-field="name" data-filter-control="input" data-sortable="true">name</th>
+                    <th data-field="surname" data-filter-control="input" data-sortable="true">surname</th>
+                    <th data-field="color" data-filter-control="input" data-sortable="true">preferred color</th>
+                    <th data-field="price" data-filter-control="input" data-sortable="true">comfortable price</th>
+                    <th data-field="viewed" data-sortable="true">viewed</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for p in get_information %}
+                <tr class="{{p.viewed}}">
+                    <td class="bs-checkbox"><input value="{{p.id}}" type="checkbox"></td>
+                    <td>{{p.id}}</td>
+                    <td>{{p.phone}}</td>
+                    <td>{{p.mail}}</td>
+                    <td>{{p.message}}</td>
+                    <td>{{p.name }}</td>
+                    <td>{{p.surname}}</td>
+                    <td>{{p.color}}</td>
+                    <td>{{p.price }}</td>
+                    <td>{{p.viewed }}</td>
+                </tr>
+            {% endfor%}
+            </tbody>
+        </table>
+    <input type="submit" name="change_data" value="Delete selected" class="btn btn-primary">
+    <input type="submit" name="change_data" value="Mark as read" class="btn btn-primary">
+    <input type="submit" name="change_data" value="Mark as unread" class="btn btn-primary">
+
+    </form>
+</div>
+{% endblock %}

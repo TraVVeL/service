@@ -1,0 +1,84 @@
+{% extends 'admin/base_admin.html' %}
+{% block content %}
+{{ super() }}
+
+<h3 class="title-collection">{{ title }}</h3>
+
+<div class="container">
+
+    <div id="toolbar">
+        <select class="form-control">
+        <option value="">Export Basic</option>
+        <option value="all">Export All</option>
+        <option value="selected">Export Selected</option>
+        </select>
+    </div>
+    <form method="POST">
+
+        <table id="table" 
+        data-toggle="table"
+        data-search="true"
+        data-filter-control="true" 
+        data-show-export="true"
+        data-click-to-select="true"
+        data-toolbar="#toolbar"
+        data-id-field="id"
+        data-select-item-name="checkbox_value_order"
+
+        data-pagination="true">
+
+            <thead>
+                <tr>
+                    <th data-checkbox="true"></th>
+                    <th data-field="id" data-filter-control="input" data-sortable="true">id</th> 
+                    <th data-field="name" data-filter-control="input" data-sortable="true">name</th>
+                    <th data-field="phone" data-filter-control="input" data-sortable="true">phone</th>
+                    <th data-field="mail" data-filter-control="input" data-sortable="true">mail</th>
+                    <th data-field="secondary_name" data-filter-control="input" data-sortable="true">secondary_name</th>
+                    <th data-field="secondary_phone" data-filter-control="input" data-sortable="true">secondary_phone</th>
+                    <th data-field="city" data-filter-control="input" data-sortable="true">city</th>
+                    <th data-field="street" data-filter-control="input" data-sortable="true">street</th>
+                    <th data-field="building_adress" data-filter-control="input" data-sortable="true">building_address</th>
+                    <th data-field="entrance" data-filter-control="input" data-sortable="true">entrance</th>
+                    <th data-field="floor" data-filter-control="input" data-sortable="true">floor</th>
+                    <th data-field="apartment" data-filter-control="input" data-sortable="true">apartment</th>
+                    <th data-field="deliver" data-filter-control="input" data-sortable="true">deliver</th>
+                    <th data-field="deliver_time" data-filter-control="input" data-sortable="true">deliver_time</th>
+                    <th data-field="note" data-filter-control="input" data-sortable="true">note</th>
+                    <th data-field="delivered" data-filter-control="input" data-sortable="true">delivered</th>
+                    <th data-field="user_id" data-filter-control="input" data-sortable="true">user id</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for p in get_order %}
+                <tr class="{{p.delivered}}">
+                    <td class="bs-checkbox"><input value="{{p.id}}" type="checkbox"></td>
+                    <td>{{p.id}}</td>
+                    <td>{{p.name}}</td>
+                    <td>{{p.phone}}</td>
+                    <td>{{p.mail}}</td>
+                    <td>{{p.secondary_name }}</td>
+                    <td>{{p.secondary_phone}}</td>
+                    <td>{{p.city}}</td>
+                    <td>{{p.street }}</td>
+                    <td>{{p.building_address }}</td>
+                    <td>{{p.entrance }}</td>
+                    <td>{{p.floor }}</td>
+                    <td>{{p.apartment }}</td>
+                    <td>{{p.deliver }}</td>
+                    <td>{{p.deliver_time }}</td>
+                    <td>{{p.note }}</td>
+                    <td>{{p.delivered }}</td>
+                    <td>{{p.user_id }}</td>
+                </tr>
+            {% endfor%}
+            </tbody>
+        </table>
+    <input type="submit" name="change_data" value="Delete selected" class="btn btn-primary">
+    <input type="submit" name="change_data" value="Mark as delivered" class="btn btn-primary">
+    <input type="submit" name="change_data" value="Mark as processing" class="btn btn-primary">
+    <input type="submit" name="change_data" value="Mark as canceled" class="btn btn-primary">
+
+    </form>
+</div>
+{% endblock %}
